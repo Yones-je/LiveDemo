@@ -6,6 +6,7 @@ const dress = require('../assets/icons/dress.png');
 const live = require('../assets/icons/live.png');
 const shirt = require('../assets/icons/shirt.png');
 const streaming = require('../assets/icons/streaming.png');
+const sweFlag = require('../assets/icons/swe.png');
 
 export default {
   bookshelf,
@@ -16,4 +17,5 @@ export default {
   live,
   shirt,
   streaming,
+  sweFlag,
 };

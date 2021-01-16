@@ -1,0 +1,5 @@
+{
+    "prettier.bracketSpacing": false,
+    "prettier.jsxSingleQuote": true,
+    "prettier.tabWidth": 4
+}
