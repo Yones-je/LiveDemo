@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // My imports
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
-const signUp = () => {
+const signUp = ({navigation}) => {
   const [showPassword, setshowPassword] = useState(false);
 
   function renderHeader() {
@@ -188,7 +188,7 @@ const signUp = () => {
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          onPress={() => console.log('Navigate to Home')}>
+          onPress={() => navigation.navigate('Home')}>
           <Text style={{color: COLORS.primary, ...FONTS.h3}}>Fortsätt</Text>
         </TouchableOpacity>
       </View>
