@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
 const signUp = ({navigation}) => {
-  const [showPassword, setshowPassword] = useState(false);
+  const [showPassword, setshowPassword] = useState(true);
 
   function renderHeader() {
     return (

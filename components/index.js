@@ -1,3 +1,4 @@
 import FeaturedList from './featuredList';
+import RenderLogo from './renderLogo';
 
-export {FeaturedList};
+export {FeaturedList, RenderLogo};
