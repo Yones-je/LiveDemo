@@ -26,7 +26,7 @@ const signUp = ({navigation}) => {
           marginTop: SIZES.padding,
           paddingHorizontal: SIZES.padding,
         }}
-        onPress={() => console.log('Sign Up')}>
+        onPress={() => navigation.navigate('Start')}>
         <Icon name="arrow-back" size={24} color={COLORS.gray} />
         <Text
           style={{marginLeft: SIZES.padding, color: COLORS.gray, ...FONTS.h4}}>
