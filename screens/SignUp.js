@@ -13,9 +13,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 // My imports
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
+import {RenderButton, RenderLogo} from '../components';
 
 const signUp = ({navigation}) => {
   const [showPassword, setshowPassword] = useState(true);
+  const [enteredPassword, setEnteredPassword] = useState('');
+  const [enteredUsername, setEnteredUsername] = useState('');
 
   function renderHeader() {
     return (
@@ -35,27 +38,6 @@ const signUp = ({navigation}) => {
       </TouchableOpacity>
     );
   }
-
-  function renderLogo() {
-    return (
-      <View
-        style={{
-          marginTop: SIZES.padding,
-          height: 100,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Image
-          source={images.liveLogo}
-          resizeMode="center"
-          style={{
-            width: '50%',
-          }}
-        />
-      </View>
-    );
-  }
-
   function renderForm() {
     return (
       <View
@@ -66,7 +48,7 @@ const signUp = ({navigation}) => {
         {/* Full Name */}
         <View style={{marginTop: 30}}>
           <Text style={{color: COLORS.purple, ...FONTS.body3}}>
-            För- och Efternamn
+            Användarnamn
           </Text>
           <TextInput
             style={{
@@ -80,6 +62,7 @@ const signUp = ({navigation}) => {
             placeholder="Skriv ditt namn här"
             placeholderTextColor={COLORS.lightGreen}
             selectionColor={COLORS.white}
+            onChangeText={(username) => setEnteredUsername(username)}
           />
         </View>
 
@@ -156,6 +139,7 @@ const signUp = ({navigation}) => {
             placeholderTextColor={COLORS.lightGreen}
             selectionColor={COLORS.white}
             secureTextEntry={showPassword}
+            onChangeText={(password) => setEnteredPassword(password)}
           />
           <TouchableOpacity
             style={{
@@ -177,24 +161,6 @@ const signUp = ({navigation}) => {
     );
   }
 
-  function renderButton() {
-    return (
-      <View style={{marginHorizontal: 50, marginTop: 20, marginBottom: 10}}>
-        <TouchableOpacity
-          style={{
-            height: 60,
-            backgroundColor: COLORS.purple,
-            borderRadius: 15,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={() => navigation.navigate('Home')}>
-          <Text style={{color: COLORS.primary, ...FONTS.h3}}>Fortsätt</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -204,9 +170,16 @@ const signUp = ({navigation}) => {
         style={{flex: 1}}>
         <ScrollView>
           {renderHeader()}
-          {renderLogo()}
+          <RenderLogo />
           {renderForm()}
-          {renderButton()}
+          <RenderButton
+            lable="Fortsätt"
+            onPress={() => {
+              console.log(enteredPassword);
+              console.log(enteredUsername);
+              navigation.navigate('Home');
+            }}
+          />
           <View
             style={{
               marginHorizontal: 50,
