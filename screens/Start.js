@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,12 +7,18 @@ import {
   TextInput,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import auth from '@react-native-firebase/auth';
 
 // My imports
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 import {RenderLogo, PasswordField, RenderButton} from '../components';
 
 const Start = ({navigation}) => {
+  const [enteredPassword, setEnteredPassword] = useState('');
+  const [enteredUsername, setEnteredUsername] = useState('');
+  const handleCallback = (password) => {
+    setEnteredPassword(password);
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -35,12 +41,31 @@ const Start = ({navigation}) => {
               placeholder="Användarnamn"
               placeholderTextColor={COLORS.black}
               selectionColor={COLORS.white}
+              onChangeText={(username) => setEnteredUsername(username)}
             />
-            <PasswordField />
+            <PasswordField handleCallback={handleCallback} />
           </View>
           <RenderButton
             lable="Logga in"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => {
+              auth()
+                .signInWithEmailAndPassword(enteredUsername, enteredPassword)
+                .then(() => {
+                  console.log('User signed in!');
+                })
+                .catch((error) => {
+                  if (error.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                  }
+
+                  if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                  }
+
+                  console.error(error);
+                });
+              navigation.navigate('Home');
+            }}
           />
           <TouchableOpacity
             style={{marginHorizontal: 15}}

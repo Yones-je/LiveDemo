@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
-const passwordField = () => {
+const passwordField = (props) => {
   const [showPassword, setshowPassword] = useState(true);
 
   return (
@@ -22,6 +22,7 @@ const passwordField = () => {
         placeholderTextColor={COLORS.black}
         selectionColor={COLORS.white}
         secureTextEntry={showPassword}
+        onChangeText={props.handleCallback}
       />
       <TouchableOpacity
         style={{

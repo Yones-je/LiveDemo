@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 // My imports
 import {SignUp, Start} from './screens';
@@ -17,7 +18,7 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-  return (
+  /* return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{
@@ -30,10 +31,10 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-/*
-Authentication flow
-// Set an initializing state whilst Firebase connects
+}; */
+
+  //Authentication flow
+  // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -52,25 +53,25 @@ Authentication flow
 
   if (!user) {
     return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName={'Start'}>
-        <Stack.Screen name="Start" component={Start} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Home" component={Tabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName={'Start'}>
+          <Stack.Screen name="Start" component={Start} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Home" component={Tabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
 
   return (
-    <View>
+    <NavigationContainer>
       <Tabs />
-    </View>
+    </NavigationContainer>
   );
-}
-*/
+};
+
 export default App;

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82620730604",
+    "project_id": "livedemo-496fa",
+    "storage_bucket": "livedemo-496fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82620730604:android:27ec22f8b6bfa1cac569c9",
+        "android_client_info": {
+          "package_name": "com.livedemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82620730604-vg012kph105j3cknn4vpi19j3b8p4b8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLpP4YKuDoIeK0VTVvMKDjl7c0JcCSz0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82620730604-vg012kph105j3cknn4vpi19j3b8p4b8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
